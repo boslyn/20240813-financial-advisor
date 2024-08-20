@@ -4,6 +4,7 @@ import google.generativeai as palm
 api = "AIzaSyDSOMHPCfvCDEot0nLOsn8VTROVQvDn_sU"
 palm.configure(api_key=api)
 model={"model":"models/chat-bison-001"}
+
 app = Flask(__name__)
 
 @app.route("/", methods=["GET","POST"])
