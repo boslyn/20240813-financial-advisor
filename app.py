@@ -26,5 +26,9 @@ def makersuite():
 def prediction():
     return(render_template("prediction.html"))
 
+@app.route("/singapore_joke",methods=["GET","POST"])
+def singapore_joke():
+    return(render_template("singapore_joke.html"))
+
 if __name__ == "__main__":
     app.run()
