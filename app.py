@@ -22,13 +22,14 @@ def makersuite():
     r = palm.chat(messages=q, **model)
     return(render_template("makersuite.html",r=r.last))
 
-@app.route("/prediction", methods=["GET","POST"])
+""" @app.route("/prediction", methods=["GET","POST"])
 def prediction():
-    return(render_template("prediction.html"))
+    return(render_template("prediction.html")) """
 
-@app.route("/singapore_joke",methods=["GET","POST"])
+@app.route("/singapore_joke", methods=["GET","POST"])
 def singapore_joke():
     return(render_template("singapore_joke.html"))
+
 
 if __name__ == "__main__":
     app.run()
