@@ -3,11 +3,8 @@ import google.generativeai as genai
 import os
 
 api = os.getenv("MAKERSUITE_API_TOKEN")
-palm.configure(api_key=api)
-model={"model":"models/chat-bison-001"}
+model=genai.GenerativeModel("gemini-1.5-flash")
 
-#genai.configure(api_key="AIzaSyDSOMHPCfvCDEot0nLOsn8VTROVQvDn_sU")
-#model=genai.GenerativeModel("gemini-1.5-flash")
 app = Flask(__name__)
 
 @app.route("/", methods=["GET","POST"])
@@ -21,10 +18,8 @@ def financial_QA():
 @app.route("/makersuite", methods=["GET","POST"])
 def makersuite():
     q=request.form.get("q")
-    r = palm.chat(messages=q, **model)
-    #r = model.generate_content(q)
-    #return(render_template("makersuite.html",r=r.text))
-    return(render_template("makersuite.html",r=r.last))
+    r = model.generate_content(q)
+    return(render_template("makersuite.html",r=r.text))
 
 """ @app.route("/prediction", methods=["GET","POST"])
 def prediction():
@@ -37,3 +32,4 @@ def singapore_joke():
 
 if __name__ == "__main__":
     app.run()
+
